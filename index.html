@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/manifest.json">
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <title>openDataBase</title>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="semantic.min.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="semantic.min.js"></script>
+
+</head>
+
+<body class="ui container">
+    <div class="ui vertical masthead center aligned segment">
+        <div class="ui text container">
+            <h1 class="ui center aligned icon header">
+              <i class="database icon"></i>
+              openDataBase
+              <div class="sub header">The collection of open data sources.</div>
+            </h1>
+        </div>
+    </div>
+
+    <div class="ui horizontal divider"></div>
+
+    <div class="ui container" ng-app="datasourcesApp" ng-controller="mainController">
+        <div class="ui secondary menu">
+            <a class="item disabled">
+                <i class="heartbeat icon"></i>Health
+            </a>
+            <!--  ng-class="{'active':categoryFilter === 'Government'}"
+                            ng-click="categoryFilter = 'Government'" -->
+            <a class="item disabled">
+                <i class="university icon"></i>Government
+            </a>
+            <a class="item disabled">
+                <i class="student icon"></i>Education
+            </a>
+
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui icon input">
+                        <input type="text" placeholder="Search..." ng-model="searchTerm">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="ui compact celled table">
+            <thead>
+                <tr>
+                    <th ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                        Name
+                    </th>
+                    <th ng-click="sortType = 'description'; sortReverse = !sortReverse">
+                        Description
+                    </th>
+                    <th ng-click="sortType = 'category'; sortReverse = !sortReverse">
+                        Category
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="datasource in datasources | orderBy:sortType:sortReverse | filter:showData">
+                    <td><a href="{{ datasource.link }}">{{datasource.name}}</a></td>
+                    <td>{{ datasource.description }}</td>
+                    <td>{{ datasource.category }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
