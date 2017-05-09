@@ -1,4 +1,5 @@
-![Screenshot of openDataBase][https://raw.githubusercontent.com/HackHPI/openDataBase/master/screenshot.png]
+# openDataBase
+The collection of open data sources.
 
 ## Add your own datasource
 Want to add your own datasource? Just **open an issue** containing the following information:
