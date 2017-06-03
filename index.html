@@ -44,15 +44,13 @@
 
     <div class="ui container" ng-app="datasourcesApp" ng-controller="mainController">
         <div class="ui secondary menu">
-            <a class="item disabled">
+            <a class="item" ng-click="toggleCategory($event, 'Health')">
                 <i class="heartbeat icon"></i>Health
             </a>
-            <!--  ng-class="{'active':categoryFilter === 'Government'}"
-                            ng-click="categoryFilter = 'Government'" -->
-            <a class="item disabled">
+            <a class="item" ng-click="toggleCategory($event, 'Government'); ">
                 <i class="university icon"></i>Government
             </a>
-            <a class="item disabled">
+            <a class="item" ng-click="toggleCategory($event, 'Education')">
                 <i class="student icon"></i>Education
             </a>
 
