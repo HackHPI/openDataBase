@@ -19,7 +19,7 @@ angular.module('datasourcesApp', ["firebase"])
         $scope.sortReverse = false; // set the default sort order
         $scope.searchTerm = ''; // set the default search/filter term
         // maybe use own small database that includes all the categories here instead?
-        $scope.categoryFilter = new Set(["Government", "Research Outputs", "Health", "Education", "Facts"]);
+        $scope.categoryFilter = new Set(["Government", "Research Output", "Health", "Education", "Facts"]);
 
         $scope.showData = function(datasource) {
             return $scope.categoryFilter.has(datasource.category) &&
